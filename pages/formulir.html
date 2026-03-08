@@ -281,7 +281,6 @@
 
 
     /* ========== FORM ELEMENTS ========== */
-    /* Former form styles removed */
 
     /* ========== INFO BOX ========== */
     .info-box {
@@ -325,9 +324,6 @@
       flex-shrink: 0;
       margin-top: 1px;
     }
-
-    /* ========== SUCCESS MODAL ========== */
-    /* Former modal styles removed */
 
     /* ========== NASA-INSPIRED FOOTER ========== */
     .footer {
@@ -502,7 +498,6 @@
         font-size: 9px;
       }
 
-      /* Former responsive form styles removed */
     }
 
     @media (max-width: 480px) {
@@ -583,31 +578,17 @@
       animation-delay: 0.3s;
     }
 
-    /* Loading spinner */
-    /* Former utility styles removed */
-
-    /* Scaling trick for Google Forms iframe */
+    /* Google Forms iframe */
     .iframe-scaler {
       width: 100%;
-      overflow: hidden;
       border-radius: 12px;
     }
 
     .iframe-scaler iframe {
-      width: 111.1%;
-      /* 1 / 0.9 to compensate scale */
-      transform: scale(0.9);
-      transform-origin: 0 0;
+      width: 100%;
       border: none;
       display: block;
-    }
-
-    @media (max-width: 480px) {
-      .iframe-scaler iframe {
-        width: 117.6%;
-        /* 1 / 0.85 for extra compact mobile */
-        transform: scale(0.85);
-      }
+      min-height: 1200px;
     }
   </style>
 </head>
@@ -645,7 +626,8 @@
     <div class="page-hero-inner">
       <div class="page-hero-badge">Penerimaan Santri Baru 2026/2027</div>
       <h1>Formulir Pendaftaran</h1>
-      <p>Tata Cara Pendaftaran</p>
+      <p>Lengkapi formulir di bawah ini dengan data yang benar dan valid. Pendaftaran hanya diterima melalui formulir
+        online ini sebelum melanjutkan ke tahap berikutnya.</p>
       <div class="hero-steps">
         <div class="hero-step">
           <div class="hero-step-num">1</div>
@@ -660,7 +642,7 @@
           Sowan Dewan Masyayikh dengan disertai walinya.
         </div>
         <div class="hero-step">
-          <div class="hero-step-num">3</div>
+          <div class="hero-step-num">4</div>
           Melakukan verifikasi data di kantor pondok pada jam kerja.
         </div>
       </div>
@@ -682,16 +664,13 @@
     </div>
 
     <!-- Google Forms Embed -->
-    <div class="form-card fade-in" style="padding-top: 5px; max-height: 700px; overflow: hidden;">
-      <div class="iframe-scaler" style="height: 1000px;">
+    <div class="form-card fade-in">
+      <div class="iframe-scaler">
         <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSdh5aZurhcKyYqu_w5AL53f2g4Ro1goUlkwiYLXOY-j1nvrew/viewform?usp=dialog"
-          height="800" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdh5aZurhcKyYqu_w5AL53f2g4Ro1goUlkwiYLXOY-j1nvrew/viewform?embedded=true"
+          height="1200" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
       </div>
     </div>
-
-    <!-- Form -->
-    <!-- Former form removed -->
 
   </main>
 
@@ -744,10 +723,6 @@
     </div>
   </footer>
 
-
-
-  <!-- ========== SUCCESS MODAL ========== -->
-  <!-- Former modal removed -->
 
 
   <!-- ========== JAVASCRIPT ========== -->
