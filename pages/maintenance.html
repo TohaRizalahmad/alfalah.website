@@ -562,28 +562,28 @@
           <div class="progress-section">
             <div class="progress-label">
               <span>Progress Pemeliharaan</span>
-              <span class="progress-pct">72%</span>
+              <span class="progress-pct" id="progressPct">0%</span>
             </div>
             <div class="progress-track">
-              <div class="progress-fill"></div>
+              <div class="progress-fill" id="progressFill" style="width:0%"></div>
             </div>
           </div>
 
-          <ul class="steps-list">
-            <li class="step-item done">
-              <div class="step-icon">✓</div>
-              <span>Audit konten halaman selesai</span>
+          <ul class="steps-list" id="stepsList">
+            <li class="step-item" id="step-1">
+              <div class="step-icon" id="step-icon-1"></div>
+              <span>Audit konten halaman</span>
             </li>
-            <li class="step-item done">
-              <div class="step-icon">✓</div>
+            <li class="step-item" id="step-2">
+              <div class="step-icon" id="step-icon-2"></div>
               <span>Penyesuaian struktur layout</span>
             </li>
-            <li class="step-item active">
-              <div class="step-icon"></div>
+            <li class="step-item" id="step-3">
+              <div class="step-icon" id="step-icon-3"></div>
               <span>Pengeditan tampilan berjalan</span>
             </li>
-            <li class="step-item">
-              <div class="step-icon"></div>
+            <li class="step-item" id="step-4">
+              <div class="step-icon" id="step-icon-4"></div>
               <span>Pengujian akhir & deploy</span>
             </li>
           </ul>
@@ -653,42 +653,75 @@
   </div>
 
   <script>
-    const target = new Date('2026-03-26T04:00:00Z');
+    // ─── KONFIGURASI ────────────────────────────────────────────────
+    const start = new Date('2026-03-20T00:00:00Z');
+    const target = new Date('2026-04-03T04:00:00Z');
+    // ────────────────────────────────────────────────────────────────
+
+    const stepThresholds = [25, 50, 75, 100];
 
     function pad(n) { return String(n).padStart(2, '0'); }
 
-    function updateCountdown() {
-      const now = new Date();
+    function updateCountdown(now) {
       const diff = target - now;
-
       if (diff <= 0) {
-        document.getElementById('cd-days').textContent = '00';
-        document.getElementById('cd-hours').textContent = '00';
-        document.getElementById('cd-mins').textContent = '00';
-        document.getElementById('cd-secs').textContent = '00';
+        ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'].forEach(id =>
+          document.getElementById(id).textContent = '00');
         return;
       }
-
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((diff % (1000 * 60)) / 1000);
-
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
       document.getElementById('cd-days').textContent = pad(d);
       document.getElementById('cd-hours').textContent = pad(h);
       document.getElementById('cd-mins').textContent = pad(m);
       document.getElementById('cd-secs').textContent = pad(s);
     }
 
-    function updateClock() {
-      const now = new Date();
+    function updateProgress(now) {
+      const total = target - start;
+      const elapsed = now - start;
+      const pct = Math.min(100, Math.max(0, Math.round((elapsed / total) * 100)));
+
+      // Update progress bar
+      document.getElementById('progressPct').textContent = pct + '%';
+      document.getElementById('progressFill').style.width = pct + '%';
+
+      // Update steps berdasarkan threshold
+      for (let i = 1; i <= 4; i++) {
+        const item = document.getElementById('step-' + i);
+        const icon = document.getElementById('step-icon-' + i);
+        const prevDone = i === 1 ? true : pct >= stepThresholds[i - 2];
+        const thisDone = pct >= stepThresholds[i - 1];
+
+        item.className = 'step-item';
+        if (thisDone) {
+          item.classList.add('done');
+          icon.textContent = '✓';
+        } else if (prevDone) {
+          item.classList.add('active');
+          icon.textContent = '';
+        } else {
+          icon.textContent = '';
+        }
+      }
+    }
+
+    function updateClock(now) {
       document.getElementById('utcTime').textContent = now.toUTCString().replace(' GMT', ' UTC');
       document.getElementById('isoTime').textContent = now.toISOString();
     }
 
-    updateCountdown();
-    updateClock();
-    setInterval(() => { updateCountdown(); updateClock(); }, 1000);
+    function tick() {
+      const now = new Date();
+      updateCountdown(now);
+      updateProgress(now);
+      updateClock(now);
+    }
+
+    tick();
+    setInterval(tick, 1000);
   </script>
 
 </body>
