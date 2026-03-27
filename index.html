@@ -444,14 +444,11 @@
 
 
     .cta-section {
-      padding: 80px 8%;
-      background: var(--primary-dark);
+      padding: 90px 8%;
+      background: linear-gradient(160deg, #0d1f1c 0%, var(--primary-dark) 50%, #0d1f1c 100%);
       position: relative;
       overflow: hidden;
       text-align: center;
-      border-top: 3px solid transparent;
-      border-bottom: 3px solid transparent;
-      border-image: linear-gradient(90deg, transparent, var(--accent), transparent) 1;
     }
 
     .cta-section::before {
@@ -459,90 +456,229 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 80% at 10% 50%, rgba(212, 175, 55, 0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 80% at 90% 50%, rgba(212, 175, 55, 0.07) 0%, transparent 70%);
+        radial-gradient(ellipse 55% 70% at 15% 50%, rgba(212, 175, 55, 0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 70% at 85% 50%, rgba(212, 175, 55, 0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 50% 0%, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
       pointer-events: none;
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--accent) 30%, #fff8e1 50%, var(--accent) 70%, transparent 100%);
+      opacity: 0.7;
     }
 
     .cta-inner {
       position: relative;
       z-index: 1;
-      max-width: 640px;
+      max-width: 780px;
       margin: 0 auto;
     }
 
     .cta-label {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-size: clamp(9px, 2vw, 10px);
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--accent);
-      background: rgba(212, 175, 55, 0.12);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      padding: 5px 16px;
-      margin-bottom: 20px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 22px;
+    }
+
+    .cta-label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulseDot 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.6); }
     }
 
     .cta-inner h2 {
-      font-size: clamp(22px, 4vw, 36px);
-      font-weight: 700;
+      font-size: clamp(24px, 4.5vw, 40px);
+      font-weight: 800;
       color: var(--text-light);
       margin-bottom: 14px;
-      line-height: 1.25;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
     }
 
-    .cta-inner p {
-      font-size: clamp(13px, 2.5vw, 14.5px);
-      color: rgba(255, 255, 255, 0.58);
+    .cta-inner > p {
+      font-size: clamp(13px, 2.5vw, 15px);
+      color: rgba(255, 255, 255, 0.55);
       line-height: 1.8;
-      margin-bottom: 36px;
+      margin-bottom: 44px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
+    /* ===== CTA CARDS ===== */
     .cta-buttons {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+      max-width: 780px;
+      margin: 0 auto;
     }
 
     .cta-btn {
-      display: inline-flex;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 0;
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(12px, 2.5vw, 13.5px);
-      font-weight: 600;
-      padding: 13px 30px;
       text-decoration: none;
-      letter-spacing: 0.3px;
-      transition: all var(--transition);
+      border-radius: 16px;
+      padding: 24px 20px 20px;
+      transition: all 0.35s ease;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
 
-    .cta-btn--primary {
-      background: var(--accent);
-      color: var(--primary-dark);
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: -60%;
+      width: 60%;
+      height: 200%;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.12) 50%, transparent 60%);
+      transform: skewX(-20deg);
+      transition: left 0.6s ease;
+      pointer-events: none;
     }
 
-    .cta-btn--primary:hover {
-      background: #e2c14a;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.35);
+    .cta-btn:hover::after {
+      left: 160%;
     }
 
-    .cta-btn--outline {
-      background: transparent;
-      color: var(--text-light);
-      border: 1.5px solid rgba(255, 255, 255, 0.35);
+    .cta-btn-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
     }
 
-    .cta-btn--outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    .cta-btn:hover .cta-btn-icon-wrap {
+      transform: scale(1.12) translateY(-2px);
+    }
+
+    .cta-btn-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .cta-btn-desc {
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0.72;
+    }
+
+    .cta-btn-arrow {
+      margin-top: 14px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .cta-btn:hover .cta-btn-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Brosur — outline glassmorphism */
+    .cta-btn--brosur {
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .cta-btn--brosur:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(212,175,55,0.5);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      color: #fff;
+    }
+    .cta-btn--brosur .cta-btn-icon-wrap {
+      background: rgba(212,175,55,0.15);
+      border: 1px solid rgba(212,175,55,0.3);
+    }
+    .cta-btn--brosur .cta-btn-arrow {
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Offline — accent green */
+    .cta-btn--offline {
+      background: rgba(40, 68, 63, 0.6);
+      border: 1.5px solid rgba(40,200,140,0.25);
+      color: #fff;
+    }
+    .cta-btn--offline:hover {
+      background: rgba(40, 68, 63, 0.9);
+      border-color: rgba(40,200,140,0.55);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(40,68,63,0.5);
+      color: #fff;
+    }
+    .cta-btn--offline .cta-btn-icon-wrap {
+      background: rgba(40,200,140,0.15);
+      border: 1px solid rgba(40,200,140,0.3);
+    }
+    .cta-btn--offline .cta-btn-arrow {
+      background: rgba(40,200,140,0.15);
+    }
+
+    /* Online — gold solid */
+    .cta-btn--online {
+      background: linear-gradient(135deg, var(--accent) 0%, #c8951f 100%);
+      border: 1.5px solid rgba(212,175,55,0.5);
+      color: #1a2e2b;
+    }
+    .cta-btn--online:hover {
+      background: linear-gradient(135deg, #e8c840 0%, #d4a020 100%);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(212,175,55,0.45);
+      color: #1a2e2b;
+    }
+    .cta-btn--online .cta-btn-icon-wrap {
+      background: rgba(26,46,43,0.18);
+      border: 1px solid rgba(26,46,43,0.2);
+    }
+    .cta-btn--online .cta-btn-title,
+    .cta-btn--online .cta-btn-desc {
+      color: #1a2e2b;
+    }
+    .cta-btn--online .cta-btn-arrow {
+      background: rgba(26,46,43,0.15);
     }
 
 
@@ -670,13 +806,31 @@
       }
 
       .cta-buttons {
-        flex-direction: column;
-        align-items: stretch;
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
 
       .cta-btn {
-        width: 100%;
-        justify-content: center;
+        flex-direction: row;
+        padding: 16px 18px;
+        text-align: left;
+        gap: 14px;
+      }
+
+      .cta-btn-icon-wrap {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+
+      .cta-btn-title,
+      .cta-btn-desc {
+        text-align: left;
+      }
+
+      .cta-btn-arrow {
+        margin-top: 0;
+        margin-left: auto;
+        flex-shrink: 0;
       }
     }
 
@@ -855,37 +1009,65 @@
   <section class="cta-section">
     <div class="cta-inner fade-up">
       <div class="cta-label">Pendaftaran Telah Dibuka</div>
-      <h2>Penerimaan Santri Baru Tahun Ajaran 2026/2027</h2>
-      <p>Daftarkan Putra-Putri Anda ke Pondok Pesantren Al-Falah dan wujudkan generasi yang berilmu dan berakhlak mulia.
-      </p>
+      <h2>Penerimaan Santri Baru<br>Tahun Ajaran 2026/2027</h2>
+      <p>Daftarkan Putra-Putri Anda ke Pondok Pesantren Al-Falah dan wujudkan generasi yang berilmu dan berakhlak mulia.</p>
+
       <div class="cta-buttons">
-        <a href="pages/maintenance.html" class="cta-btn cta-btn--outline">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-            <line x1="16" y1="13" x2="8" y2="13" />
-            <line x1="16" y1="17" x2="8" y2="17" />
-            <polyline points="10 9 9 9 8 9" />
-          </svg>
-          Lihat Brosur
+
+        <!-- Lihat Brosur -->
+        <a href="pages/maintenance.html" class="cta-btn cta-btn--brosur" id="btn-brosur">
+          <div class="cta-btn-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <span class="cta-btn-title">Lihat Brosur</span>
+          <span class="cta-btn-desc">Informasi lengkap program &amp; fasilitas</span>
+          <div class="cta-btn-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
         </a>
-        <a href="pages/form-ofline.html" class="cta-btn cta-btn--outline">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z" />
-            <path d="M9 21V12h6v9" />
-          </svg>
-          Daftar Offline
+
+        <!-- Daftar Offline -->
+        <a href="pages/form-ofline.html" class="cta-btn cta-btn--offline" id="btn-offline">
+          <div class="cta-btn-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+              <path d="M9 21V12h6v9"/>
+            </svg>
+          </div>
+          <span class="cta-btn-title">Daftar Offline</span>
+          <span class="cta-btn-desc">Datang langsung ke kantor pondok</span>
+          <div class="cta-btn-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
         </a>
-        <a href="pages/form-online.html" class="cta-btn cta-btn--primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-          </svg>
-          Daftar via Website
+
+        <!-- Daftar Online -->
+        <a href="pages/form-online.html" class="cta-btn cta-btn--online" id="btn-online">
+          <div class="cta-btn-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a2e2b" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </div>
+          <span class="cta-btn-title">Daftar via Website</span>
+          <span class="cta-btn-desc">Pendaftaran online dari mana saja</span>
+          <div class="cta-btn-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a2e2b" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
         </a>
+
       </div>
     </div>
   </section>
