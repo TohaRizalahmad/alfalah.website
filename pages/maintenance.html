@@ -572,7 +572,7 @@
           <ul class="steps-list" id="stepsList">
             <li class="step-item" id="step-1">
               <div class="step-icon" id="step-icon-1"></div>
-              <span>Audit konten halaman</span>
+              <span>Audit konten halaman selesai</span>
             </li>
             <li class="step-item" id="step-2">
               <div class="step-icon" id="step-icon-2"></div>
@@ -629,7 +629,7 @@
             </div>
             <div class="info-row">
               <span class="info-key">Estimasi Selesai</span>
-              <span class="info-val">26 Mar 2026, 04:00 UTC</span>
+              <span class="info-val" id="estimasiSelesai">—</span>
             </div>
           </div>
 
@@ -654,10 +654,13 @@
 
   <script>
     // ─── KONFIGURASI ────────────────────────────────────────────────
-    const start = new Date('2026-03-20T00:00:00Z');
-    const target = new Date('2026-04-03T04:00:00Z');
+    // Sesuaikan waktu mulai & selesai maintenance di sini
+    const start  = new Date('2026-03-20T00:00:00Z'); // Waktu mulai maintenance
+    const target = new Date('2026-04-03T04:00:00Z'); // Waktu estimasi selesai
     // ────────────────────────────────────────────────────────────────
 
+    // Threshold per step (dalam persen)
+    // step ke-N dianggap DONE ketika progress melewati batas ini
     const stepThresholds = [25, 50, 75, 100];
 
     function pad(n) { return String(n).padStart(2, '0'); }
@@ -665,7 +668,7 @@
     function updateCountdown(now) {
       const diff = target - now;
       if (diff <= 0) {
-        ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'].forEach(id =>
+        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id =>
           document.getElementById(id).textContent = '00');
         return;
       }
@@ -673,19 +676,19 @@
       const h = Math.floor((diff % 86400000) / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
       const s = Math.floor((diff % 60000) / 1000);
-      document.getElementById('cd-days').textContent = pad(d);
+      document.getElementById('cd-days').textContent  = pad(d);
       document.getElementById('cd-hours').textContent = pad(h);
-      document.getElementById('cd-mins').textContent = pad(m);
-      document.getElementById('cd-secs').textContent = pad(s);
+      document.getElementById('cd-mins').textContent  = pad(m);
+      document.getElementById('cd-secs').textContent  = pad(s);
     }
 
     function updateProgress(now) {
-      const total = target - start;
+      const total   = target - start;
       const elapsed = now - start;
-      const pct = Math.min(100, Math.max(0, Math.round((elapsed / total) * 100)));
+      const pct     = Math.min(100, Math.max(0, Math.round((elapsed / total) * 100)));
 
       // Update progress bar
-      document.getElementById('progressPct').textContent = pct + '%';
+      document.getElementById('progressPct').textContent  = pct + '%';
       document.getElementById('progressFill').style.width = pct + '%';
 
       // Update steps berdasarkan threshold
@@ -719,6 +722,15 @@
       updateProgress(now);
       updateClock(now);
     }
+
+    // Format tampilan Estimasi Selesai dari variabel target
+    const bulan = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+    const tgl  = target.getUTCDate();
+    const bln  = bulan[target.getUTCMonth()];
+    const thn  = target.getUTCFullYear();
+    const jam  = pad(target.getUTCHours());
+    const mnt  = pad(target.getUTCMinutes());
+    document.getElementById('estimasiSelesai').textContent = `${tgl} ${bln} ${thn}, ${jam}:${mnt} UTC`;
 
     tick();
     setInterval(tick, 1000);
