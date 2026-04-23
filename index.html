@@ -264,46 +264,7 @@
       justify-content:center;
     }
 
-    /* ── INFORMASI ── */
-    .informasi-section {
-      padding:80px 8% 90px;
-      background:var(--secondary);
-      position:relative;
-    }
-    .informasi-section::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:3px;
-      background:linear-gradient(90deg,transparent,rgba(212,175,55,0.3),transparent);
-    }
-    .informasi-inner {
-      max-width:580px;
-      margin:0 auto;
-    }
-    .informasi-card {
-      background:#fff;
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:var(--shadow-md);
-      border:1px solid rgba(212,175,55,0.15);
-    }
-    .informasi-card img {
-      width:100%; height:auto;
-      object-fit:contain; display:block;
-      background:#f7f6f0;
-    }
-    .informasi-card-footer {
-      padding:14px 20px;
-      display:flex; align-items:center; justify-content:center; gap:8px;
-      border-top:1px solid #f0efe8;
-    }
-    .informasi-card-footer span {
-      font-size:11px; font-weight:600;
-      color:var(--text-mid); letter-spacing:1px; text-transform:uppercase;
-    }
-    .informasi-dot {
-      width:6px; height:6px; border-radius:50%;
-      background:var(--accent); display:inline-block;
-      animation:pulseDot 2s ease-in-out infinite;
-    }
+
 
     /* ── FOOTER ── */
     .footer {
@@ -377,10 +338,10 @@
     /* ── RESPONSIVE 640px ── */
     @media (max-width:640px) {
       .cta-section { padding:60px 5%; }
-      .unit-section, .formal-section, .informasi-section { padding:50px 5%; }
+      .unit-section, .formal-section { padding:50px 5%; }
       .sec-head { margin-bottom:30px; }
 
-      .unit-grid { grid-template-columns:repeat(3,1fr); gap:10px; }
+      .unit-grid { grid-template-columns:1fr; gap:12px; }
       .edu-card-img, .edu-dual-img { height:110px; }
       .edu-card-img { padding:10px; }
       .edu-dual-img img { padding:8px; }
@@ -403,18 +364,18 @@
 
     /* ── RESPONSIVE 480px ── */
     @media (max-width:480px) {
-      .unit-section, .formal-section, .informasi-section { padding:40px 4%; }
+      .unit-section, .formal-section { padding:40px 4%; }
       .cta-section { padding:50px 5%; }
       .sec-underline { width:48px; height:3px; }
 
-      .unit-grid { gap:8px; }
+      .unit-grid { gap:10px; }
       .edu-card-img, .edu-dual-img { height:95px; }
       .edu-card-img { padding:8px; }
       .edu-card-info { padding:8px 8px 12px; }
       .edu-card-name { font-size:10px; }
       .edu-card-badge { font-size:7.5px; padding:2px 6px; }
 
-      .informasi-inner { max-width:100%; }
+
       .cta-btn { padding:13px 16px; }
     }
   </style>
@@ -452,29 +413,29 @@
           </div>
         </a>
 
-        <a href="pages/form-offline.html" class="cta-btn cta-btn--offline" id="btn-offline">
+        <a href="pages/form-online.html" class="cta-btn cta-btn--offline" id="btn-online-1">
           <div class="cta-btn-icon-wrap">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
-              <path d="M9 21V12h6v9"/>
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
             </svg>
           </div>
-          <span class="cta-btn-title">Daftar Offline</span>
-          <span class="cta-btn-desc">Datang langsung ke kantor pondok</span>
+          <span class="cta-btn-title">Daftar Online</span>
+          <span class="cta-btn-desc">Pendaftaran Santri Putra</span>
           <div class="cta-btn-arrow">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
 
-        <a href="pages/form-online.html" class="cta-btn cta-btn--online" id="btn-online">
+        <a href="pages/form-online.html" class="cta-btn cta-btn--online" id="btn-online-2">
           <div class="cta-btn-icon-wrap">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a2e2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
               <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
             </svg>
           </div>
-          <span class="cta-btn-title">Daftar via Website</span>
-          <span class="cta-btn-desc">Pendaftaran online dari mana saja</span>
+          <span class="cta-btn-title">Daftar Online</span>
+          <span class="cta-btn-desc">Pendaftaran Santri Putri</span>
           <div class="cta-btn-arrow">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a2e2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
@@ -492,27 +453,36 @@
     </div>
 
     <div class="unit-grid">
-      <a href="pages/maintenance.html" class="edu-card fade-up">
-        <img class="edu-card-img" src="img/Logo/MISRIU Logo.jpg" alt="MISRIU Al-Falah" loading="lazy">
-        <div class="edu-card-info">
-          <span class="edu-card-badge">Non Formal</span>
-          <span class="edu-card-name">MISRIU AL FALAH</span>
+      <a href="pages/brosur.html" class="cta-btn cta-btn--brosur fade-up">
+        <div class="cta-btn-icon-wrap">
+          <img src="img/Logo/MISRIU Logo.jpg" alt="MISRIU Logo" style="width:100%; height:100%; object-fit:contain; border-radius:10px;">
+        </div>
+        <span class="cta-btn-title">Lihat Brosur</span>
+        <span class="cta-btn-desc">MISRIU AL FALAH</span>
+        <div class="cta-btn-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
 
-      <a href="pages/maintenance.html" class="edu-card fade-up">
-        <img class="edu-card-img" src="img/Logo/MISRIU Logo.jpg" alt="PPRQ Al-Falah" loading="lazy">
-        <div class="edu-card-info">
-          <span class="edu-card-badge">Non Formal</span>
-          <span class="edu-card-name">PPRQ AL FALAH</span>
+      <a href="pages/form-online.html" class="cta-btn cta-btn--offline fade-up">
+        <div class="cta-btn-icon-wrap">
+          <img src="img/Logo/MISRIU Logo.jpg" alt="PPRQ Logo" style="width:100%; height:100%; object-fit:contain; border-radius:10px;">
+        </div>
+        <span class="cta-btn-title">Daftar Online</span>
+        <span class="cta-btn-desc">PPRQ AL FALAH</span>
+        <div class="cta-btn-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
 
-      <a href="pages/maintenance.html" class="edu-card fade-up">
-        <img class="edu-card-img" src="img/Logo/RTQ Logo.jpg" alt="RTQ Al-Falah" loading="lazy">
-        <div class="edu-card-info">
-          <span class="edu-card-badge">Non Formal</span>
-          <span class="edu-card-name">RTQ AL FALAH</span>
+      <a href="pages/form-online.html" class="cta-btn cta-btn--online fade-up">
+        <div class="cta-btn-icon-wrap">
+          <img src="img/Logo/RTQ Logo.jpg" alt="RTQ Logo" style="width:100%; height:100%; object-fit:contain; border-radius:10px;">
+        </div>
+        <span class="cta-btn-title">Daftar Online</span>
+        <span class="cta-btn-desc">RTQ AL FALAH</span>
+        <div class="cta-btn-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a2e2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
     </div>
@@ -547,24 +517,7 @@
     </div>
   </section>
 
-  <!-- ░░ INFORMASI ░░ -->
-  <section class="informasi-section">
-    <div class="sec-head">
-      <div class="sec-eyebrow fade-up">Terbaru</div>
-      <h2 class="fade-up">Informasi</h2>
-      <div class="sec-underline fade-up"></div>
-    </div>
 
-    <div class="informasi-inner fade-up">
-      <div class="informasi-card">
-        <img src="img/Informasi/Informasi 4.jpg" alt="Informasi 4" loading="lazy">
-        <div class="informasi-card-footer">
-          <span class="informasi-dot"></span>
-          <span>Pengumuman Terbaru</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
     <footer class="footer">
     <div style="max-width: 1200px; margin: 0 auto; padding: 0 5%;">
