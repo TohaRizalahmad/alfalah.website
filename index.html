@@ -257,11 +257,12 @@
     }
     .formal-grid-2 {
       display:grid;
-      grid-template-columns:repeat(2,minmax(260px,420px));
+      grid-template-columns:repeat(2,minmax(200px,320px));
       gap:24px;
-      max-width:900px;
+      max-width:700px;
       margin:0 auto;
       justify-content:center;
+      position:relative; z-index:1;
     }
 
 
@@ -462,7 +463,7 @@
 
       <a href="pages/form-online.html" class="cta-btn cta-btn--offline fade-up">
         <div class="cta-btn-icon-wrap">
-          <img src="img/Logo/MISRIU Logo.jpg" alt="PPRQ Logo" style="width:100%; height:100%; object-fit:contain; border-radius:10px;">
+          <img src="img/Properti Utama/LOGO PPRQ.png" alt="PPRQ Logo" style="width:100%; height:100%; object-fit:contain; border-radius:10px;">
         </div>
         <span class="cta-btn-title">PPRQ AL FALAH</span>
         <span class="cta-btn-desc">Pondok Pesantren Roudlotul Qur'an</span>
@@ -484,30 +485,34 @@
     </div>
   </section>
 
-  <section class="formal-section">
-    <div class="sec-head">
-      <div class="sec-eyebrow fade-up">Lembaga Mitra</div>
+  <section class="formal-section unit-section" style="background: var(--primary);">
+    <div class="sec-head light">
+      <div class="sec-eyebrow dark fade-up">Lembaga Mitra</div>
       <h2 class="fade-up">Pendidikan Formal Lainnya</h2>
       <div class="sec-underline fade-up"></div>
     </div>
 
     <div class="formal-grid-2">
-      <a href="pages/Pendidikan-Formal-Lainnya.html" class="edu-card fade-up">
-        <div class="edu-dual-img">
-          <img src="img/Logo/SMP Logo.jpg" alt="SMP Al-Falah" loading="lazy">
-          <img src="img/Logo/SMK Logo.jpg" alt="SMK Al-Falah" loading="lazy">
+      <a href="pages/Pendidikan-Formal-Lainnya.html" class="cta-btn cta-btn--offline fade-up">
+        <div class="cta-btn-icon-wrap" style="width: 96px; height: 52px; display: flex; gap: 8px; padding: 4px; background: rgba(255,255,255,0.1); border-radius: 12px; justify-content: center; align-items: center;">
+          <img src="img/Logo/SMP Logo.jpg" alt="SMP Logo" style="width:38px; height:38px; object-fit:contain; border-radius:4px;">
+          <img src="img/Logo/SMK Logo.jpg" alt="SMK Logo" style="width:38px; height:38px; object-fit:contain; border-radius:4px;">
         </div>
-        <div class="edu-card-info">
-          <span class="edu-card-badge">Formal</span>
-          <span class="edu-card-name">SMP &amp; SMK AL FALAH</span>
+        <span class="cta-btn-title">SMP &amp; SMK AL FALAH</span>
+        <span class="cta-btn-desc">Sekolah Menengah Pertama &amp; Kejuruan</span>
+        <div class="cta-btn-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
 
-      <a href="pages/maintenance.html" class="edu-card fade-up">
-        <img class="edu-card-img" src="img/Logo/UT Logo.jpg" alt="Universitas Terbuka Al-Falah" loading="lazy">
-        <div class="edu-card-info">
-          <span class="edu-card-badge">Formal</span>
-          <span class="edu-card-name">UNIVERSITAS TERBUKA AL FALAH</span>
+      <a href="pages/maintenance.html" class="cta-btn cta-btn--online fade-up">
+        <div class="cta-btn-icon-wrap">
+          <img src="img/Logo/UT Logo.jpg" alt="UT Logo" style="width:100%; height:100%; object-fit:contain; border-radius:10px;">
+        </div>
+        <span class="cta-btn-title">UNIVERSITAS TERBUKA</span>
+        <span class="cta-btn-desc">Sentra Layanan UT Al Falah</span>
+        <div class="cta-btn-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a2e2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
     </div>
